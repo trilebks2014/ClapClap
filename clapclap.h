@@ -36,6 +36,7 @@ class ClapClap{
 		int isMatch();
 		void processAnalogSound(GraphSound *graph);
 		int checkTop(GraphSound graphSound);
+		void clearGraphSound(GraphSound *graph);
 		void resetValue();
 		void resetIndex();
 };

@@ -67,15 +67,10 @@ int ClapClap::checkClapClap(int analogSoundIn){
      processAnalogSound(&leftGraph);
    }
     else  {
-      /*Debug
-      for(int i=0;i<leftGraph.index;i++){
-        Serial.print(">>>>");
-        Serial.println(leftGraph.graph[i]);
-      }*/
       processAnalogSound(&rightGraph);
     }
   }
-  
+
   if(matchGraph==0||((indexSound-checkIndexInGraph)>4)){
     resetValue();
   }
@@ -91,15 +86,14 @@ int ClapClap::checkClapClap(int analogSoundIn){
 void ClapClap::resetValue(){
   matchGraph=1;
   switchLeftGraph=1;
-  leftGraph.countTop=0;
-  leftGraph.index=0;
-  leftGraph.top=0;
-  leftGraph.sum=0;
-
-  rightGraph.countTop=0;
-  rightGraph.index=0;
-  rightGraph.top=0;
-  rightGraph.sum=0;
+  clearGraphSound(&leftGraph);
+  clearGraphSound(&rightGraph);
+}
+void ClapClap::clearGraphSound(GraphSound *graphSound){
+  graphSound->countTop=0;
+  graphSound->index=0;
+  graphSound->top=0;
+  graphSound->sum=0;
 }
 void ClapClap::resetIndex(){
   indexSound=0;
